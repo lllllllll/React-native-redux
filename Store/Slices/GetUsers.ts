@@ -1,17 +1,20 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
+import { get } from '../Services';
 
-const userProfileSlice = createSlice({
-  name: 'userProfile',
+const users = createSlice({
+  name: 'users',
   initialState: {
     data: null,
   },
   reducers: {
-    userProfileSetting: (state, action) => {
-      state.data = action.payload.data;
+    getUser: (state) => {
+      get().then(data => {
+        state.data = data
+      });
     },
   },
 });
 
-export const { userProfileSetting } = userProfileSlice.actions;
+export const { getUser } = users.actions;
 
-export default userProfileSlice.reducer;
+export default users.reducer;

@@ -1,10 +1,13 @@
 import * as React from 'react';
+import { useSelector, shallowEqual } from 'react-redux';
 import { StyleSheet, ScrollView } from 'react-native';
 
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 
 export default function TabOneScreen() {
+  const user = useSelector(({user}) => user, shallowEqual);
+
   return (
     <View style={styles.container}>
       {/* <Text style={styles.title}>Tab 1</Text>
